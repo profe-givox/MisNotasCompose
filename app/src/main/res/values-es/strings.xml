@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MisNotasCompose</string>
     <string name="title_activity_localizacion">ActivityLocalizacion</string>
 
     <string name="approximate_location_access">Acceso a ubicacion aproximada</string>
-
 </resources>
