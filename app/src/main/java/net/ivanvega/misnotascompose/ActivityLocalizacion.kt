@@ -27,9 +27,11 @@ class ActivityLocalizacion : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                     1   //LocationPermissionScreen()
+
+                      //1   //LocationPermissionScreen()
                      //2   //CurrentLocationScreen()
                      //3   //LocationUpdatesScreen()
+                        LocationPermissionScreen()
                     }
                     //Greeting2("Android")
                 }
