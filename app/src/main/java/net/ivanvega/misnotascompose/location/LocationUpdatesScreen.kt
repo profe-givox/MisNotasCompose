@@ -80,6 +80,7 @@ fun LocationUpdatesContent(usePreciseLocation: Boolean) {
 
     // Only register the location updates effect when we have a request
     if (locationRequest != null) {
+
         LocationUpdatesEffect(locationRequest!!) { result ->
             // For each result update the text
             for (currentLocation in result.locations) {

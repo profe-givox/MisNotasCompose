@@ -14,6 +14,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import net.ivanvega.misnotascompose.location.CurrentLocationScreen
 import net.ivanvega.misnotascompose.location.LocationPermissionScreen
 import net.ivanvega.misnotascompose.location.LocationUpdatesScreen
+import net.ivanvega.misnotascompose.mapasgoogle.MapaComposeGoogle
+import net.ivanvega.misnotascompose.mapasosmandroidcompose.OSMComposeMapa
+
 import net.ivanvega.misnotascompose.ui.theme.MisNotasComposeTheme
 
 class ActivityLocalizacion : ComponentActivity() {
@@ -31,8 +34,10 @@ class ActivityLocalizacion : ComponentActivity() {
                       //1   //LocationPermissionScreen()
                      //2   //CurrentLocationScreen()
                      //3   //LocationUpdatesScreen()
-                        LocationPermissionScreen()
+
                     }
+
+                    OSMComposeMapa()
                     //Greeting2("Android")
                 }
             }
