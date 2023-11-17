@@ -122,6 +122,7 @@ fun OSMComposeMapa(
 
         }
         if(rutaUiState.value.resp!=null){
+            geoPointPoluLyne = rutaUiState.value.resp!!.features[0].geometry.coordinates.map { GeoPoint(it[1],it[0]) }
             Polyline(geoPoints = geoPointPoluLyne) {
 
             }

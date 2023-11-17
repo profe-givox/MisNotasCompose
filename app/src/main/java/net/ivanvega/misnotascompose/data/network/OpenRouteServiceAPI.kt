@@ -16,7 +16,7 @@ private const val BASE_URL =
     "https://api.openrouteservice.org"
 
 private const val API_KEY =
-    "5b3ce3597851110001cf624819e6024a736b4766afe215764a8bdba1"
+    "xxxxxxxxxxxxxxxxxxxxx" //obtener esrkey registrandose
 
 
 private val retrofit = Retrofit.Builder()
@@ -34,7 +34,7 @@ interface IOpenRouteServiceAPI {
                         @Query("start") start : String ,
                         @Query("end") end : String ): GeoJSONDirection
 
-    @GET("/v2/directions/driving-car?api_key=5b3ce3597851110001cf624819e6024a736b4766afe215764a8bdba1&start=8.681495,49.41461&end=8.687872,49.420318")
+    @GET("/v2/directions/driving-car?api_key=xxxxxx&start=8.681495,49.41461&end=8.687872,49.420318")
     suspend  fun directions_get( ): GeoJSONDirection
 }
 
