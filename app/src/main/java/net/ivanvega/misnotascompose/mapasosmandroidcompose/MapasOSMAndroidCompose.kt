@@ -36,6 +36,7 @@ import org.osmdroid.views.overlay.CopyrightOverlay
 @Composable
 fun OSMComposeMapa(
     modifier: Modifier = Modifier.fillMaxSize(),
+    viewModel: OpenRouteServiceViewModel
 ){
     // define properties with remember with default value
     var mapProperties by remember {
@@ -65,14 +66,22 @@ fun OSMComposeMapa(
         zoom = 18.0 // optional, default is 5.0
     }
 
+
+
+    viewModel.directions_get("driving-car",
+        GeoPoint(20.139261336104898, -101.15026781862757),
+        GeoPoint(20.142110828753893, -101.1787275290486),
+        )
+
     // define polyline
-    val geoPointPoluLyne = remember {
+    var geoPointPoluLyne = remember {
         listOf(GeoPoint(20.1389,-101.15088),
             GeoPoint(20.1434,-101.1498),
             GeoPoint(20.14387,-101.15099),
             GeoPoint(20.14395,-101.15128),
             GeoPoint(20.14411,-101.15186))
     }
+
 
 
     val overlayManagerState = rememberOverlayManagerState()

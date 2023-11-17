@@ -11,11 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import net.ivanvega.misnotascompose.location.CurrentLocationScreen
 import net.ivanvega.misnotascompose.location.LocationPermissionScreen
 import net.ivanvega.misnotascompose.location.LocationUpdatesScreen
 import net.ivanvega.misnotascompose.mapasgoogle.MapaComposeGoogle
 import net.ivanvega.misnotascompose.mapasosmandroidcompose.OSMComposeMapa
+import net.ivanvega.misnotascompose.mapasosmandroidcompose.OpenRouteServiceViewModel
 
 import net.ivanvega.misnotascompose.ui.theme.MisNotasComposeTheme
 
@@ -36,8 +38,8 @@ class ActivityLocalizacion : ComponentActivity() {
                      //3   //LocationUpdatesScreen()
 
                     }
-
-                    OSMComposeMapa()
+                    val vm :  OpenRouteServiceViewModel =  viewModel()
+                    OSMComposeMapa(viewModel =vm)
                     //Greeting2("Android")
                 }
             }
