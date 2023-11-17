@@ -68,10 +68,10 @@ fun OSMComposeMapa(
 
 
 
-    viewModel.directions_get("driving-car",
-        GeoPoint(20.139261336104898, -101.15026781862757),
-        GeoPoint(20.142110828753893, -101.1787275290486),
-        )
+//    viewModel.directions_get("driving-car",
+//        GeoPoint(20.139261336104898, -101.15026781862757),
+//        GeoPoint(20.142110828753893, -101.1787275290486),
+//        )
 
     // define polyline
     var geoPointPoluLyne = remember {
