@@ -1,6 +1,9 @@
 package net.ivanvega.misnotascompose.model
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.Serializer
+
 @Serializable
 data class Geometry (val coordinates : List<List<Double>>)
 @Serializable

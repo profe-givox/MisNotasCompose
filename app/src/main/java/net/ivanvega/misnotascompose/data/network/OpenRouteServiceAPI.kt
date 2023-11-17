@@ -2,6 +2,8 @@ package net.ivanvega.misnotascompose.data.network
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
+
+import kotlinx.serialization.json.JsonConfiguration
 import net.ivanvega.misnotascompose.model.GeoJSONDirection
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Response
@@ -18,14 +20,17 @@ private const val API_KEY =
 
 
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+    .addConverterFactory(Json{
+        isLenient = true
+        ignoreUnknownKeys = true}
+            .asConverterFactory("application/json".toMediaType()))
     .baseUrl(BASE_URL)
     .build()
 
 interface IOpenRouteServiceAPI {
     @GET("/v2/directions/{profile}")
     suspend fun directions_get( @Path("profile") profile: String,
-                        @Query("api_key ") apikey : String = API_KEY,
+                        @Query("api_key") apikey : String = API_KEY,
                         @Query("start") start : String ,
                         @Query("end") end : String ): GeoJSONDirection
 

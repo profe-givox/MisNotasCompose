@@ -1,5 +1,6 @@
 package net.ivanvega.misnotascompose.mapasosmandroidcompose
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -37,7 +38,10 @@ import org.osmdroid.views.overlay.CopyrightOverlay
 fun OSMComposeMapa(
     modifier: Modifier = Modifier.fillMaxSize(),
     viewModel: OpenRouteServiceViewModel
-){
+) {
+
+    val rutaUiState = viewModel.directUiState
+
     // define properties with remember with default value
     var mapProperties by remember {
         mutableStateOf(DefaultMapProperties)
@@ -45,7 +49,7 @@ fun OSMComposeMapa(
 
     // define marker state
     val depokMarkerState = rememberMarkerState(
-        geoPoint = GeoPoint(20.1389,-101.15088),
+        geoPoint = GeoPoint(20.1389, -101.15088),
         rotation = 90f // default is 0f
     )
 
@@ -62,10 +66,9 @@ fun OSMComposeMapa(
 
     // define camera state
     val cameraState = rememberCameraState {
-        geoPoint = GeoPoint(20.1389,-101.15088)
+        geoPoint = GeoPoint(20.1389, -101.15088)
         zoom = 18.0 // optional, default is 5.0
     }
-
 
 
 //    viewModel.directions_get("driving-car",
@@ -73,6 +76,7 @@ fun OSMComposeMapa(
 //        GeoPoint(20.142110828753893, -101.1787275290486),
 //        )
 
+    Log.d("GIVO",rutaUiState.value.toString())
     // define polyline
     var geoPointPoluLyne = remember {
         listOf(GeoPoint(20.1389,-101.15088),
@@ -80,6 +84,9 @@ fun OSMComposeMapa(
             GeoPoint(20.14387,-101.15099),
             GeoPoint(20.14395,-101.15128),
             GeoPoint(20.14411,-101.15186))
+        //rutaUiState.value.resp?.features[0].geometry.coordinates.map { GeoPoint(it[0],it[1]) }
+
+
     }
 
 
@@ -88,6 +95,7 @@ fun OSMComposeMapa(
 
     val ctx = LocalContext.current
     //Agregar nodo Mapa
+
     OpenStreetMap(cameraState = cameraState  ,
         properties = mapProperties,
         overlayManagerState = overlayManagerState,
@@ -113,8 +121,10 @@ fun OSMComposeMapa(
             }
 
         }
-        Polyline(geoPoints = geoPointPoluLyne) {
+        if(rutaUiState.value.resp!=null){
+            Polyline(geoPoints = geoPointPoluLyne) {
 
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import net.ivanvega.misnotascompose.data.network.OpenRouteServiceApi
@@ -26,16 +27,15 @@ class OpenRouteServiceViewModel : ViewModel() {
 
     fun directions_get( profile: String,  start: GeoPoint,  end: GeoPoint){
 
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
 
-//            val route = OpenRouteServiceApi.retrofitService.directions_get(
-//                profile = "driving-car",
-//                start = "${start.longitude},${start.latitude}",
-//                end = "${end.longitude},${end.latitude}"
-//            )
-             OpenRouteServiceApi.retrofitService.directions_get(
+            val route = OpenRouteServiceApi.retrofitService.directions_get(
+                profile = "driving-car",
+                start = "${start.longitude},${start.latitude}",
+                end = "${end.longitude},${end.latitude}"
             )
-            //directUiState.value = DirectUIstate(route)
+            //val route = OpenRouteServiceApi.retrofitService.directions_get()
+            directUiState.value = DirectUIstate(route)
             Log.d("GIVO ","")
 
         }
