@@ -54,20 +54,20 @@ import net.ivanvega.misnotascompose.R
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun LocationPermissionScreen() {
-    val context = LocalContext.current
+        val context = LocalContext.current
 
-    // Approximate location access is sufficient for most of use cases
-    val locationPermissionState = rememberPermissionState(
-        Manifest.permission.ACCESS_COARSE_LOCATION,
-    )
+        // Approximate location access is sufficient for most of use cases
+        val locationPermissionState = rememberPermissionState(
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+        )
 
-    // When precision is important request both permissions but make sure to handle the case where
-    // the user only grants ACCESS_COARSE_LOCATION
-    val fineLocationPermissionState = rememberMultiplePermissionsState(
-        listOf(
-            Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION,
-        ),
-    )
+        // When precision is important request both permissions but make sure to handle the case where
+        // the user only grants ACCESS_COARSE_LOCATION
+        val fineLocationPermissionState = rememberMultiplePermissionsState(
+            listOf(
+                Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION,
+            ),
+        )
 
     // In really rare use cases, accessing background location might be needed.
     val bgLocationPermissionState = rememberPermissionState(

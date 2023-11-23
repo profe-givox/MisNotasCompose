@@ -32,14 +32,13 @@ class ActivityLocalizacion : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-
-                      //1   //LocationPermissionScreen()
+                        LocationPermissionScreen()
                      //2   //CurrentLocationScreen()
                      //3   //LocationUpdatesScreen()
 
                     }
-                    val vm :  OpenRouteServiceViewModel =  viewModel()
-                    OSMComposeMapa(viewModel =vm)
+                    /*val vm :  OpenRouteServiceViewModel =  viewModel()
+                    OSMComposeMapa(viewModel =vm)*/
                     //Greeting2("Android")
                 }
             }
